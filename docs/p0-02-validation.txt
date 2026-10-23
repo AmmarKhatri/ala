@@ -1,0 +1,64 @@
+P0-02 validation — Node v24.14.1 / npm 11.11.0
+
+Expected rejection (exit 1):
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 18 files in 5ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 18 files in 8ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+error domain-boundary: src/domain/architectureViolation.ts -> src/application/architectureTarget.ts
+
+Final clean run (exit 0):
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 16 files in 5ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 16 files in 8ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no source files yet.
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  19:42:21
+   Duration  2.44s (tests 99%)
+
