@@ -86,3 +86,10 @@ P0-08 supplies content-addressed objects, a verified append-only ledger, atomic
 state snapshots, receipt pins, and garbage collection behind `WorkspaceStore`.
 The CLI calls an application service for GC. See [storage](storage.md) for the
 reference model and the limits of local crash/tamper detection.
+
+## Evidence models
+
+P0-09 supplies pure evidence/unknown schemas, deterministic JSON and digests, deep
+immutability, and explicit promotion/resolution APIs. Method-specific data schemas
+remain with their producers. See [evidence](evidence.md) for confidence boundaries
+and persistence responsibilities.
