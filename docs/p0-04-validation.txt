@@ -1,0 +1,59 @@
+P0-04 validation — Node v24.14.1 / npm 11.11.0
+
+Initial architecture check failed before ESM export resolution was configured:
+error no-unresolved-imports: src/main.ts -> @modelcontextprotocol/sdk/server/stdio.js
+error no-unresolved-imports: src/server/createServer.ts -> @modelcontextprotocol/sdk/server/mcp.js
+error no-unresolved-imports: src/server/registerContractTool.ts -> @modelcontextprotocol/sdk/server/mcp.js
+
+Corrected resolver configuration; no boundary rule was removed.
+
+Final check (exit 0):
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test && npm run docs:check
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 31 files in 5ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 31 files in 15ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no dependency violations found.
+
+> ala-mcp@0.0.0 pretest
+> npm run build
+
+
+> ala-mcp@0.0.0 build
+> tsc -p tsconfig.build.json
+
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  4 passed (4)
+      Tests  38 passed (38)
+   Start at  19:57:55
+   Duration  2.41s (tests 98%, import 2%)
+
+
+> ala-mcp@0.0.0 docs:check
+> node scripts/generateToolDocs.mjs --check
+
+Tool docs match contracts.

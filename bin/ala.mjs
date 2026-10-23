@@ -5,11 +5,15 @@ try {
   const { version } = JSON.parse(
     await readFile(new URL("../package.json", import.meta.url), "utf8"),
   );
-  const [{ runCli }, { cliHandlers }] = await Promise.all([
+  const [{ runCli }, { createCliHandlers }] = await Promise.all([
     import("../dist/cli/runCli.js"),
     import("../dist/composition/cliHandlers.js"),
   ]);
-  const result = await runCli(process.argv.slice(2), version, cliHandlers);
+  const result = await runCli(
+    process.argv.slice(2),
+    version,
+    createCliHandlers(version),
+  );
   if (result.stdout) process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
   process.exitCode = result.exitCode;

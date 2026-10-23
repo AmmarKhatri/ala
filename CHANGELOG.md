@@ -4,6 +4,10 @@
 
 ### Added
 
+- P0-04: MCP stdio server with exact plan instructions, Zod-backed ping contract,
+  validated structured results and provenance metadata, generated tool docs, and
+  SDK contract tests including a real CLI subprocess.
+
 - P0-03: `ala` CLI dispatcher with help, package version, stdio/HTTP MCP and
   doctor routes, strict argument validation, compiled builds, and executable tests.
   Unimplemented services report failure on stderr without claiming readiness.
@@ -18,6 +22,8 @@
   MIT license, and editor defaults.
 
 ### Changed
+
+- Resolve ESM package exports in architecture checks for SDK subpath imports.
 
 - Pin TypeScript to 6.0.3 for dependency-cruiser 18.7 parser compatibility;
   fail architecture checks if implementation files are not analyzed.

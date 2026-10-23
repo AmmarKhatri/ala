@@ -1,6 +1,6 @@
 # Third-party notices
 
-Direct development dependencies for P0-01/P0-02 (licenses from npm package metadata):
+Direct dependencies through P0-04 (licenses from npm package metadata):
 
 | Package            | Version | License           |
 | ------------------ | ------- | ----------------- |
@@ -10,6 +10,14 @@ Direct development dependencies for P0-01/P0-02 (licenses from npm package metad
 | @types/node        | 22.20.5 | MIT               |
 | dependency-cruiser | 18.7.0  | MIT               |
 
-These tools are installed for development, not vendored. Their license texts and
+Runtime packages:
+
+| Package                   | Version | License |
+| ------------------------- | ------- | ------- |
+| @modelcontextprotocol/sdk | 1.32.1  | MIT     |
+| zod                       | 4.6.7   | MIT     |
+
+The MCP SDK and Zod are runtime dependencies; the remaining packages are development
+tools. Packages are installed through npm, not vendored. Their license texts and
 transitive dependency notices remain in the installed packages. The lockfile records
 the resolved dependency tree and package license metadata where provided.
