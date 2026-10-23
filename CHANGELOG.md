@@ -4,6 +4,9 @@
 
 ### Added
 
+- P0-09: immutable Zod evidence/unknown models, deterministic JSON and SHA-256
+  digests, verified deserialization, and explicit confidence-promotion rules.
+
 - P0-08: verified content-addressed objects, hash-chained ledger, atomic state,
   single-writer locking, receipt pins, and `ala gc` with dry-run support.
 
