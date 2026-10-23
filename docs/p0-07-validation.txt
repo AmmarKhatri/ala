@@ -1,0 +1,55 @@
+P0-07 final check; real Node subprocess fixtures on current macOS host.
+Initial lint failure: src/process/runProcess.ts lint/correctness/noUnsafeFinally.
+Cleanup now preserves operation context without throwing from finally.
+
+Final exit 0:
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test && npm run docs:check
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 55 files in 6ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 55 files in 8ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no dependency violations found.
+
+> ala-mcp@0.0.0 pretest
+> npm run build
+
+
+> ala-mcp@0.0.0 build
+> tsc -p tsconfig.build.json
+
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  8 passed (8)
+      Tests  154 passed (154)
+   Start at  00:00:05
+   Duration  2.42s (tests 94%, import 5%, transform 1%)
+
+
+> ala-mcp@0.0.0 docs:check
+> node scripts/generateToolDocs.mjs --check && node scripts/generateErrorDocs.mjs --check
+
+Tool docs match contracts.
+Error docs match catalog.

@@ -1,3 +1,5 @@
+import { ALA_PROCESS_STDOUT_MAX_BYTES } from "./processStdoutMaxBytes.js";
+import { ALA_PROCESS_STDERR_MAX_BYTES } from "./processStderrMaxBytes.js";
 import { ALA_COMMAND_TIMEOUT_MS } from "./commandTimeoutMs.js";
 import { ALA_FUZZ_BUDGET_S } from "./fuzzBudgetS.js";
 import { ALA_MCP_MAX_RESPONSE_BYTES } from "./mcpMaxResponseBytes.js";
@@ -10,6 +12,8 @@ export const settings = [
   ALA_FUZZ_BUDGET_S,
   ALA_COMMAND_TIMEOUT_MS,
   ALA_MCP_MAX_RESPONSE_BYTES,
+  ALA_PROCESS_STDOUT_MAX_BYTES,
+  ALA_PROCESS_STDERR_MAX_BYTES,
 ] as const;
 
 type SettingName = (typeof settings)[number]["name"];
