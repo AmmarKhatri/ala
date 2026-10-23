@@ -2,7 +2,9 @@
 
 This is the intended architecture from PLAN.md §6. P0-01 and P0-02 supply development
 tooling and layer enforcement. P0-03 adds argument dispatch in `src/cli/` and
-service wiring in `src/composition/`; the services below remain unimplemented.
+service wiring in `src/composition/`. P0-04 implements MCP stdio initialization
+and schema-backed tool registration; the optimization services below remain
+unimplemented.
 - CLI and MCP adapters call application services through shared contracts.
 - Application services coordinate pure domain logic, storage, and provider ports.
 - Domain modules contain no I/O and import no other layers.
@@ -27,7 +29,8 @@ Application services may only use type-only imports from provider interfaces in
 `src/providers/ports/`; those interfaces may depend on domain types and other ports.
 Concrete provider wiring belongs in `src/composition/`.
 
-The check includes TypeScript type-only imports and re-exports and resolves `.js`
+The resolver honors ESM package exports. The check includes TypeScript type-only
+imports and re-exports and resolves `.js`
 import specifiers to their TypeScript sources. Unresolved imports fail. Domain
 imports of Node filesystem, process-spawning, worker, network, and interactive I/O
 modules fail. This static check cannot prove the absence of I/O inside third-party
@@ -49,5 +52,6 @@ of ports. Fixtures are created in temporary directories and removed after each t
 `runCli` receives handlers for MCP (with an explicit stdio/HTTP transport choice)
 and doctor, returning an exit code and optional stdout/stderr text. Parsing has no
 process or filesystem dependencies. The launcher alone writes output and sets the
-process exit code. Composition currently supplies unavailable-service handlers;
-future tasks replace them with actual services.
+process exit code. Composition starts the stdio server through `src/main.ts`; HTTP and doctor
+retain unavailable-service handlers. The server registration helper depends on
+contracts, validates outputs, and attaches provenance metadata.
