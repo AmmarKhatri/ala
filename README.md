@@ -23,7 +23,8 @@ npm run check
 
 After `npm run build`, try `node bin/ala.mjs --help` or `node bin/ala.mjs --version`.
 See [CLI behavior](docs/cli.md) for available routes and [MCP setup](docs/mcp.md)
-for connecting a client.
+for connecting a client. The [configuration foundation](docs/configuration.md)
+defines the initial settings for future services.
 
 See [development commands](docs/development.md), [architecture](docs/architecture.md),
 and [the implementation plan](PLAN.md). Contributors and agents must read

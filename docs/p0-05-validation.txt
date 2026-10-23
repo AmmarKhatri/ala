@@ -1,0 +1,52 @@
+P0-05 validation — Node v24.14.1 / npm 11.11.0
+
+Final check (exit 0):
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test && npm run docs:check
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 39 files in 5ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 39 files in 8ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no dependency violations found.
+
+> ala-mcp@0.0.0 pretest
+> npm run build
+
+
+> ala-mcp@0.0.0 build
+> tsc -p tsconfig.build.json
+
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  5 passed (5)
+      Tests  90 passed (90)
+   Start at  23:47:35
+   Duration  2.42s (tests 96%, import 3%, transform 1%)
+
+
+> ala-mcp@0.0.0 docs:check
+> node scripts/generateToolDocs.mjs --check
+
+Tool docs match contracts.
