@@ -1,3 +1,5 @@
+import { collectGarbage } from "../application/collectGarbage.js";
+import { AlaError, InternalError } from "../application/errors.js";
 import type { CliHandlers } from "../cli/runCli.js";
 import { startStdioServer } from "../main.js";
 
@@ -12,6 +14,19 @@ export function createCliHandlers(version: string): CliHandlers {
       }
       await startStdioServer(version);
       return { exitCode: 0 };
+    },
+    async gc(root, dryRun) {
+      try {
+        return {
+          exitCode: 0,
+          stdout: `${JSON.stringify(await collectGarbage(root, dryRun))}\n`,
+        };
+      } catch (error) {
+        const payload = (
+          error instanceof AlaError ? error : new InternalError()
+        ).toPayload();
+        return { exitCode: 1, stderr: `${JSON.stringify(payload)}\n` };
+      }
     },
     async doctor() {
       return {

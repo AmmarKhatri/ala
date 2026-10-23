@@ -16,6 +16,7 @@ function handlers(): CliHandlers {
   return {
     mcp: vi.fn(async () => ({ exitCode: 0 })),
     doctor: vi.fn(async () => ({ exitCode: 0 })),
+    gc: vi.fn(async () => ({ exitCode: 0 })),
   };
 }
 

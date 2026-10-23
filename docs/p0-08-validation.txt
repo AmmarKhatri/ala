@@ -1,0 +1,52 @@
+P0-08 final validation; simulated interruption uses a real child killed after fsync and before rename.
+Exit 0:
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test && npm run docs:check
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 60 files in 6ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 60 files in 9ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no dependency violations found.
+
+> ala-mcp@0.0.0 pretest
+> npm run build
+
+
+> ala-mcp@0.0.0 build
+> tsc -p tsconfig.build.json
+
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  9 passed (9)
+      Tests  164 passed (164)
+   Start at  00:04:48
+   Duration  2.47s (tests 92%, import 5%, transform 2%)
+
+
+> ala-mcp@0.0.0 docs:check
+> node scripts/generateToolDocs.mjs --check && node scripts/generateErrorDocs.mjs --check
+
+Tool docs match contracts.
+Error docs match catalog.

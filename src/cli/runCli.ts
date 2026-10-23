@@ -7,6 +7,7 @@ export interface CliResult {
 export interface CliHandlers {
   mcp(options: { transport: "stdio" | "http" }): Promise<CliResult>;
   doctor(): Promise<CliResult>;
+  gc(root: string, dryRun: boolean): Promise<CliResult>;
 }
 
 const help = `Usage: ala <command>
@@ -15,6 +16,7 @@ Commands:
   mcp          Start the MCP server over stdio
   mcp --http   Start the MCP server over HTTP
   doctor       Inspect environment readiness
+  gc <store> [--dry-run]  Collect unreferenced workspace objects
 
 Options:
   --version    Print the installed version
@@ -31,7 +33,7 @@ export async function runCli(
     args.length === 0 ||
     (args.length === 1 && (command === "--help" || command === "-h")) ||
     (args.length === 2 &&
-      (command === "mcp" || command === "doctor") &&
+      (command === "mcp" || command === "doctor" || command === "gc") &&
       (options[0] === "--help" || options[0] === "-h"))
   ) {
     return { exitCode: 0, stdout: help };
@@ -47,6 +49,14 @@ export async function runCli(
   }
   if (command === "doctor" && options.length === 0) {
     return handlers.doctor();
+  }
+  if (
+    command === "gc" &&
+    (options.length === 1 ||
+      (options.length === 2 && options[1] === "--dry-run")) &&
+    !options[0].startsWith("-")
+  ) {
+    return handlers.gc(options[0], options[1] === "--dry-run");
   }
   return { exitCode: 2, stderr: `Unknown command or options.\n\n${help}` };
 }

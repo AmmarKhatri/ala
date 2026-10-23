@@ -24,3 +24,6 @@ message on stderr and exits with status 1. Run `npm run build` and retry.
 
 `npm test` builds first and tests both dispatch routing and the actual executable.
 `npm pack` builds first and includes the launcher and compiled modules.
+
+`ala gc <workspace-directory> [--dry-run]` collects unreferenced stored objects.
+See [storage](storage.md) for reference retention, locking, and crash behavior.
