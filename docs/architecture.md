@@ -64,3 +64,11 @@ all effective settings with provenance or a complete list of invalid settings.
 Composition will pass parsed values to services when those consumers land;
 no layer boundary is relaxed to let services read process environment directly.
 See [configuration](configuration.md) for syntax, ranges, and current scope.
+
+## Errors
+
+The domain owns `AlaError`, its fourteen typed subclasses, and the error catalog.
+The application layer re-exports the types for adapters. Zod defines the public
+payload in contracts; the server projects errors into MCP tool results. Only
+explicitly supplied, JSON-safe public context is serialized. Unknown exceptions
+become generic internal errors. Error catalog documentation is generated and checked.

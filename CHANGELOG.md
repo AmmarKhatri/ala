@@ -4,6 +4,9 @@
 
 ### Added
 
+- P0-06: fourteen typed error codes, schema-validated MCP error projection, safe
+  internal errors, a throwing config adapter, and a generated error catalog.
+
 - P0-05: Zod-validated fuzz-budget, command-timeout, and MCP response-size
   settings with explicit defaults and inclusive bounds, provenance, aggregated
   configuration issues, and recovery text. Limit enforcement remains with future consumers.

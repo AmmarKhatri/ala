@@ -1,5 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { z } from "zod";
+import { InvalidRequestError } from "../application/errors.js";
+import { errorResult } from "./errorResult.js";
 import type { ToolContract } from "../contracts/toolContract.js";
 
 export function registerContractTool<
@@ -20,18 +22,22 @@ export function registerContractTool<
       outputSchema: contract.output,
     },
     async (args) => {
-      const result = contract.output.parse(
-        await handler(contract.input.parse(args)),
-      );
-      return {
-        structuredContent: result,
-        content: [{ type: "text" as const, text: JSON.stringify(result) }],
-        _meta: {
-          provenance: contract.projectDerived
-            ? { untrusted_content: true, source: "user_project" }
-            : { untrusted_content: false, source: "ala_system" },
-        },
-      };
+      try {
+        const input = contract.input.safeParse(args);
+        if (!input.success) throw new InvalidRequestError();
+        const result = contract.output.parse(await handler(input.data));
+        return {
+          structuredContent: result,
+          content: [{ type: "text" as const, text: JSON.stringify(result) }],
+          _meta: {
+            provenance: contract.projectDerived
+              ? { untrusted_content: true, source: "user_project" }
+              : { untrusted_content: false, source: "ala_system" },
+          },
+        };
+      } catch (error) {
+        return errorResult(error, contract.projectDerived);
+      }
     },
   );
 }

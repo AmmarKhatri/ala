@@ -26,8 +26,9 @@ Each entry contains `definition`, `value`, and `source` (`default` or `setting`)
 On failure, the result is `{ success: false, issues }`; all invalid registered
 settings are reported in registration order and no partial configuration is returned.
 Issues carry `configuration_invalid`, the setting name, a message, and structured
-remediation. Invalid raw input is not echoed. P0-06 will add the shared error hierarchy
-and MCP error projection; this parser returns data rather than throwing exceptions.
+remediation. Invalid raw input is not echoed. `parseEnvironmentOrThrow` converts invalid results into a shared
+`ConfigurationInvalidError`, preserving all issues and recovery actions. The original
+parser continues to return data rather than throwing exceptions.
 
 Recovery text reports the effective value, unit, source, floor, maximum, next action,
 where to configure it, restart policy, and which other limits remain unchanged.
