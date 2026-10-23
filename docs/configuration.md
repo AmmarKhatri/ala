@@ -1,8 +1,8 @@
 # Configuration foundation
 
-P0-05 provides three numeric setting modules, a pure `parseEnvironment(environment)`
-function, and `limitRecoveryText(effectiveSetting)`. These are building blocks for
-later services; they do not yet enforce limits in the MCP server or run processes.
+P0-05 provides three initial numeric setting modules, a pure `parseEnvironment(environment)`
+function, and `limitRecoveryText(effectiveSetting)`. P0-07 consumes the command deadline and adds independent stdout/stderr caps in the
+[process runner](processes.md). Fuzz and MCP budgets remain foundations for later services.
 
 | Setting                      | Default         | Inclusive range                | Unit         | Restart required by policy |
 | ---------------------------- | --------------- | ------------------------------ | ------------ | -------------------------- |

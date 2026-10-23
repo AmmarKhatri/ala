@@ -4,6 +4,10 @@
 
 ### Added
 
+- P0-07: owned process groups, deadline/cancellation tree termination, private
+  temporary roots, environment scrubbing, independent byte caps with recovery
+  text, and real subprocess integration tests.
+
 - P0-06: fourteen typed error codes, schema-validated MCP error projection, safe
   internal errors, a throwing config adapter, and a generated error catalog.
 

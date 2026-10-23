@@ -72,3 +72,10 @@ The application layer re-exports the types for adapters. Zod defines the public
 payload in contracts; the server projects errors into MCP tool results. Only
 explicitly supplied, JSON-safe public context is serialized. Unknown exceptions
 become generic internal errors. Error catalog documentation is generated and checked.
+
+## Provider processes
+
+P0-07 supplies owned POSIX process groups, deadlines and cancellation, capped raw
+output, an environment allowlist, and private temporary-directory cleanup. The
+runner is for trusted provider commands until sandbox composition exists. See
+[process lifecycle](processes.md) for effective limits and host-test coverage.
