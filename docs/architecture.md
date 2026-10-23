@@ -55,3 +55,12 @@ process or filesystem dependencies. The launcher alone writes output and sets th
 process exit code. Composition starts the stdio server through `src/main.ts`; HTTP and doctor
 retain unavailable-service handlers. The server registration helper depends on
 contracts, validates outputs, and attaches provenance metadata.
+
+## Configuration
+
+P0-05 supplies pure configuration parsing and recovery text in `src/config/`, with
+one module per setting. Callers supply environment snapshots and receive either
+all effective settings with provenance or a complete list of invalid settings.
+Composition will pass parsed values to services when those consumers land;
+no layer boundary is relaxed to let services read process environment directly.
+See [configuration](configuration.md) for syntax, ranges, and current scope.

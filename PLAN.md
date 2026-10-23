@@ -4,7 +4,7 @@
 > faster, verified assembly. Every speedup ships with a receipt: what was measured, on which CPU,
 > how correctness was checked, and what is still unknown.
 
-**Status:** Foundation in progress; P0-01 through P0-04 implemented. **Plan version:** 1.0 (2026-10-23).
+**Status:** Foundation in progress; P0-01 through P0-05 implemented. **Plan version:** 1.0 (2026-10-23).
 **Packages:** npm `ala-mcp` (the plain `ala` name is taken on npm), CLI binary `ala`.
 **License:** MIT.
 
@@ -1475,17 +1475,24 @@ not promises; integrity work never gets cut to hit a date.
 
 ### P0: Foundation
 
+**P0-05 completed (2026-10-23):** Three sample setting modules cover fuzz budget,
+command timeout, and MCP response bytes. Zod validates syntax and inclusive bounds;
+`parseEnvironment` returns effective values with source or aggregated configuration
+issues. Recovery text includes all §19.2 fields. Tests cover defaults, overrides,
+floor/max, bad syntax, and recovery for every sample setting. Enforcement is deferred
+to consuming tasks. See `docs/p0-05-validation.txt`. Next task: P0-06.
+
 **P0-04 completed (2026-10-23):** MCP stdio initialization sends §10.5 verbatim.
 Zod contracts drive tool registration, input/output validation, structured results,
 provenance markers, and generated tool documentation. The ping tool passes SDK
 contract tests and real subprocess stdio testing. All 38 tests pass. HTTP remains
-unimplemented. See `docs/p0-04-validation.txt`. Next task: P0-05.
+unimplemented. See `docs/p0-04-validation.txt`. Next task: P0-06.
 
 **P0-03 completed (2026-10-23):** `bin/ala.mjs` dispatches stdio/HTTP MCP and
 doctor commands, prints help and the installed package version, and rejects
 invalid arguments. Service handlers explicitly report unavailable until later
 tasks implement them. All 32 tests pass; CLI behavior is documented in
-`docs/cli.md`, with check output in `docs/p0-03-validation.txt`. Next: P0-05.
+`docs/cli.md`, with check output in `docs/p0-03-validation.txt`. Next: P0-06.
 
 **P0-02 completed (2026-10-23):** dependency-cruiser enforces §6.2 via
 `npm run check:architecture` in `npm run check`. Fourteen tests pass, including
@@ -1496,7 +1503,7 @@ compatibility. See `docs/p0-02-validation.txt` for the acceptance run output.
 **P0-01 completed (2026-10-23):** ESM package, strict TypeScript, Vitest, Biome,
 MIT license, and contributor docs are in place. `npm run check` passes (one smoke
 test) on Node v24.14.1 / npm 11.11.0. D1 is resolved to Biome. The development
-minimum is Node 22.12 to satisfy Vitest. Next task: P0-05.
+minimum is Node 22.12 to satisfy Vitest. Next task: P0-06.
 
 | ID    | Task                                                                                                                                                                                                      | Acceptance criteria                                                                                      |
 | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |

@@ -4,6 +4,10 @@
 
 ### Added
 
+- P0-05: Zod-validated fuzz-budget, command-timeout, and MCP response-size
+  settings with explicit defaults and inclusive bounds, provenance, aggregated
+  configuration issues, and recovery text. Limit enforcement remains with future consumers.
+
 - P0-04: MCP stdio server with exact plan instructions, Zod-backed ping contract,
   validated structured results and provenance metadata, generated tool docs, and
   SDK contract tests including a real CLI subprocess.
