@@ -29,8 +29,10 @@ JSON text block. Project-derived results carry
 The system-generated ping uses `untrusted_content: false` and `source: "ala_system"`.
 The marker is metadata; project text must still be treated as data by clients.
 
-Validation errors and unknown tools currently use SDK tool-error responses with
-`isError: true`. ALA's stable error hierarchy and recovery fields arrive in P0-06.
+Typed application errors now return `isError: true` with the [ALA error payload](errors.md)
+in `structuredContent` and equivalent JSON text. Unexpected exceptions and invalid
+handler output become safe `internal` errors without raw exception text or stacks.
+SDK-owned pre-handler input validation and unknown-tool dispatch retain SDK responses.
 HTTP, resources, prompts, long-running tools, and full schema profiles are not
 implemented in this skeleton.
 

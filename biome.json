@@ -6,7 +6,12 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!package-lock.json", "!docs/tools.md"]
+    "includes": [
+      "**",
+      "!package-lock.json",
+      "!docs/tools.md",
+      "!docs/errors.md"
+    ]
   },
   "formatter": {
     "enabled": true,

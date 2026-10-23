@@ -135,7 +135,10 @@ test("the registration helper rejects invalid handler output", async () => {
     arguments: {},
   });
   expect(result.isError).toBe(true);
-  expect(result.structuredContent).toBeUndefined();
+  expect(result.structuredContent).toMatchObject({
+    code: "internal",
+    retryable: false,
+  });
 });
 
 test("the built CLI serves real MCP stdio traffic from another directory", async () => {

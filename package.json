@@ -18,8 +18,8 @@
     "build": "tsc -p tsconfig.build.json",
     "pretest": "npm run build",
     "prepack": "npm run build",
-    "docs:generate": "npm run build && node scripts/generateToolDocs.mjs",
-    "docs:check": "node scripts/generateToolDocs.mjs --check"
+    "docs:generate": "npm run build && node scripts/generateToolDocs.mjs && node scripts/generateErrorDocs.mjs",
+    "docs:check": "node scripts/generateToolDocs.mjs --check && node scripts/generateErrorDocs.mjs --check"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.2",
