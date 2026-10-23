@@ -79,3 +79,10 @@ P0-07 supplies owned POSIX process groups, deadlines and cancellation, capped ra
 output, an environment allowlist, and private temporary-directory cleanup. The
 runner is for trusted provider commands until sandbox composition exists. See
 [process lifecycle](processes.md) for effective limits and host-test coverage.
+
+## Storage
+
+P0-08 supplies content-addressed objects, a verified append-only ledger, atomic
+state snapshots, receipt pins, and garbage collection behind `WorkspaceStore`.
+The CLI calls an application service for GC. See [storage](storage.md) for the
+reference model and the limits of local crash/tamper detection.

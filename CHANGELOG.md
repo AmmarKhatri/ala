@@ -4,6 +4,9 @@
 
 ### Added
 
+- P0-08: verified content-addressed objects, hash-chained ledger, atomic state,
+  single-writer locking, receipt pins, and `ala gc` with dry-run support.
+
 - P0-07: owned process groups, deadline/cancellation tree termination, private
   temporary roots, environment scrubbing, independent byte caps with recovery
   text, and real subprocess integration tests.
