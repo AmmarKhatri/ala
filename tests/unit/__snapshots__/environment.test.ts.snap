@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Linux and macOS host fixtures match reviewed snapshots > linux-x64 1`] = `
+{
+  "architecture": "x64",
+  "boost": "disabled",
+  "cpu": {
+    "features": [
+      "hypervisor",
+      "sse2",
+    ],
+    "logical_cpus": 2,
+    "microarch": "zen4",
+    "microarch_confidence": "inferred",
+    "model": "AMD Ryzen 7 7700 8-Core Processor",
+    "physical_cores": 1,
+    "smt": "enabled",
+    "smt_siblings": [
+      [
+        0,
+        1,
+      ],
+    ],
+  },
+  "digest": "e66e64976992cabc4fdbc3aaeafb3a15242ac52c79340ad778427c473d4c4a7e",
+  "governor": [
+    "performance",
+  ],
+  "kernel": "fixture-linux",
+  "platform": "linux",
+  "toolchains": {
+    "clang": {
+      "status": "available",
+      "version": "clang fixture",
+    },
+  },
+  "unknowns": [],
+  "virtualization": "detected",
+}
+`;
+
+exports[`Linux and macOS host fixtures match reviewed snapshots > macos-arm64 1`] = `
+{
+  "architecture": "arm64",
+  "boost": "unknown",
+  "cpu": {
+    "features": [
+      "arm.feat_aes",
+      "neon",
+    ],
+    "logical_cpus": 8,
+    "microarch": "apple-m1",
+    "microarch_confidence": "inferred",
+    "model": "Apple M1",
+    "physical_cores": 8,
+    "smt": "disabled",
+    "smt_siblings": [],
+  },
+  "digest": "f85be9781f8306812cefed8235fbf389c78b246ba8cae1907239e9e40457a846",
+  "governor": [],
+  "kernel": "fixture-darwin",
+  "platform": "darwin",
+  "toolchains": {},
+  "unknowns": [
+    {
+      "domain": "performance",
+      "id": "unk_01000000000000000000000001",
+      "probe": "Inspect the host frequency controls before a rigorous benchmark.",
+      "question": "Which CPU frequency policy is active?",
+      "status": "open",
+    },
+    {
+      "domain": "performance",
+      "id": "unk_01000000000000000000000002",
+      "probe": "Inspect host boost controls before a rigorous benchmark.",
+      "question": "Is CPU boost enabled?",
+      "status": "open",
+    },
+  ],
+  "virtualization": "not_detected",
+}
+`;
