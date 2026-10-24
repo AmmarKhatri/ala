@@ -93,3 +93,9 @@ P0-09 supplies pure evidence/unknown schemas, deterministic JSON and digests, de
 immutability, and explicit promotion/resolution APIs. Method-specific data schemas
 remain with their producers. See [evidence](evidence.md) for confidence boundaries
 and persistence responsibilities.
+
+## Host observations
+
+P0-10 separates pure fingerprint parsing in `src/domain/env/` from OS reads and
+version probes in the environment provider. Unknown data stays explicit, and the
+fingerprint digest excludes transient Unknown IDs. See [environment](environment.md).

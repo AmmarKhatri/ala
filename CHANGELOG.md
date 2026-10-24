@@ -4,6 +4,10 @@
 
 ### Added
 
+- P0-10: Linux/macOS environment fingerprints, conservative CPU mapping, SMT
+  summaries, frequency and virtualization observations, tool-version probes, and
+  explicit unknowns with fixture snapshots.
+
 - P0-09: immutable Zod evidence/unknown models, deterministic JSON and SHA-256
   digests, verified deserialization, and explicit confidence-promotion rules.
 
