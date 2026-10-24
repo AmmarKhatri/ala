@@ -9,4 +9,5 @@ export interface ToolContract<
   input: z.ZodObject<I>;
   output: z.ZodObject<O>;
   projectDerived: boolean;
+  resultSource?: "user_project" | "host_environment" | "ala_system";
 }

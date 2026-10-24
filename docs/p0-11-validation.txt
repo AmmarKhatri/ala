@@ -1,0 +1,53 @@
+P0-11 final check. Earlier checks caught a stale expected tool list and an unused test export; both corrected.
+Live doctor CLI returned warnings without changing host configuration.
+Exit 0:
+
+> ala-mcp@0.0.0 check
+> npm run typecheck && npm run lint && npm run format:check && npm run check:architecture && npm test && npm run docs:check
+
+
+> ala-mcp@0.0.0 typecheck
+> tsc --noEmit
+
+
+> ala-mcp@0.0.0 lint
+> biome lint .
+
+Checked 78 files in 17ms. No fixes applied.
+
+> ala-mcp@0.0.0 format:check
+> biome format .
+
+Checked 78 files in 10ms. No fixes applied.
+
+> ala-mcp@0.0.0 check:architecture
+> node scripts/checkArchitecture.mjs
+
+Architecture: no dependency violations found.
+
+> ala-mcp@0.0.0 pretest
+> npm run build
+
+
+> ala-mcp@0.0.0 build
+> tsc -p tsconfig.build.json
+
+
+> ala-mcp@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/ammar/Work/ALA
+
+
+ Test Files  13 passed (13)
+      Tests  188 passed (188)
+   Start at  07:08:25
+   Duration  2.49s (tests 86%, import 12%, transform 2%)
+
+
+> ala-mcp@0.0.0 docs:check
+> node scripts/generateToolDocs.mjs --check && node scripts/generateErrorDocs.mjs --check
+
+Tool docs match contracts.
+Error docs match catalog.

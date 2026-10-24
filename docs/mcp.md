@@ -17,7 +17,7 @@ The client launches ALA and exchanges MCP messages over stdin/stdout. No network
 listener or authentication credentials are needed. Initialization advertises
 `ala-mcp`, the installed package version, and PLAN.md §10.5 instructions verbatim.
 
-The only tool in this skeleton is `ping`. Call it with `{}`; it returns status
+The connectivity tool is `ping`. Call it with `{}`; it returns status
 `ok` and empty `evidence_ids`, `unknowns`, and `next_steps` arrays. It confirms
 protocol responsiveness, not compiler availability or benchmark readiness.
 Unexpected input fields are rejected. See [generated schemas](tools.md).
@@ -40,3 +40,8 @@ Contracts live in `src/contracts/`. Run `npm run docs:generate` after changing t
 `npm run check` detects stale generated tool documentation. Do not edit
 `docs/tools.md` manually. Contract tests use the official SDK over both linked
 in-memory transports and a real CLI subprocess over stdio.
+
+`doctor` accepts an optional `checks` array: toolchains, sandbox, perf_permissions,
+and benchmark_readiness. Omission selects all checks; an empty array selects none.
+Its environment-derived output is marked untrusted with source `host_environment`.
+See [doctor](doctor.md) for status semantics.

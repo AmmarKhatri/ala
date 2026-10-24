@@ -7,9 +7,9 @@ checks, measured performance, and reproducible receipts. See the
 [language tiers](PLAN.md#2-what-any-language-means) for supported and planned use cases.
 
 The development foundation, architecture checks, CLI dispatcher, and MCP stdio
-skeleton are implemented. `ala mcp` serves a schema-backed `ping` tool. HTTP,
-environment diagnostics, compiler integration, verification, and benchmarking
-are not available yet.
+server are implemented. `ala mcp` serves schema-backed `ping` and `doctor` tools.
+`ala doctor` reports host readiness, and `ala gc` collects unreferenced stored
+objects. HTTP, compiler integration, verification, and benchmarking are not available yet.
 
 ## Development
 

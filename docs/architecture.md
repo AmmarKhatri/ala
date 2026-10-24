@@ -99,3 +99,10 @@ and persistence responsibilities.
 P0-10 separates pure fingerprint parsing in `src/domain/env/` from OS reads and
 version probes in the environment provider. Unknown data stays explicit, and the
 fingerprint digest excludes transient Unknown IDs. See [environment](environment.md).
+
+## Doctor
+
+P0-11 shares a pure readiness classifier between the MCP and CLI routes. The
+application service depends on a provider port; composition injects read-only host
+probes. Reports retain unknowns and distinguish discovered tooling from verified
+isolation or measured benchmark quality. See [doctor](doctor.md).
