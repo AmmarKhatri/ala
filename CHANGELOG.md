@@ -4,6 +4,9 @@
 
 ### Added
 
+- P0-11: shared doctor CLI/MCP readiness reports with pass/warn/fail checks,
+  remediation, explicit unknowns, and untrusted host-output provenance.
+
 - P0-10: Linux/macOS environment fingerprints, conservative CPU mapping, SMT
   summaries, frequency and virtualization observations, tool-version probes, and
   explicit unknowns with fixture snapshots.

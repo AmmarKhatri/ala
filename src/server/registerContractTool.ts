@@ -14,6 +14,10 @@ export function registerContractTool<
     input: z.output<z.ZodObject<I>>,
   ) => z.input<z.ZodObject<O>> | Promise<z.input<z.ZodObject<O>>>,
 ) {
+  const source =
+    contract.resultSource ??
+    (contract.projectDerived ? "user_project" : "ala_system");
+  const provenance = { untrusted_content: source !== "ala_system", source };
   return server.registerTool<z.ZodObject<O>, z.ZodObject<I>>(
     contract.name,
     {
@@ -30,13 +34,14 @@ export function registerContractTool<
           structuredContent: result,
           content: [{ type: "text" as const, text: JSON.stringify(result) }],
           _meta: {
-            provenance: contract.projectDerived
-              ? { untrusted_content: true, source: "user_project" }
-              : { untrusted_content: false, source: "ala_system" },
+            provenance,
           },
         };
       } catch (error) {
-        return errorResult(error, contract.projectDerived);
+        return {
+          ...errorResult(error, contract.projectDerived),
+          _meta: { provenance },
+        };
       }
     },
   );

@@ -48,7 +48,7 @@ test("initialize returns the package identity and exact plan instructions", asyn
 test("lists schemas and returns a schema-valid structured ping result", async () => {
   const client = await connect();
   const { tools } = await client.listTools();
-  expect(tools).toHaveLength(1);
+  expect(tools).toHaveLength(2);
   expect(tools[0].name).toBe("ping");
   expect(tools[0].inputSchema).toMatchObject({
     type: "object",
@@ -159,6 +159,7 @@ test("the built CLI serves real MCP stdio traffic from another directory", async
   expect(client.getServerVersion()?.version).toBe(version);
   expect((await client.listTools()).tools.map((tool) => tool.name)).toEqual([
     "ping",
+    "doctor",
   ]);
   const result = await client.callTool({ name: "ping", arguments: {} });
   expect(result.structuredContent).toMatchObject({ status: "ok" });

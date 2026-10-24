@@ -1,8 +1,9 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { z } from "zod";
+import { doctorContract } from "../dist/contracts/doctor.js";
 import { pingContract } from "../dist/contracts/ping.js";
 
-const contracts = [pingContract];
+const contracts = [pingContract, doctorContract];
 const sections = contracts.map((contract) => {
   const input = JSON.stringify(z.toJSONSchema(contract.input), null, 2);
   const output = JSON.stringify(z.toJSONSchema(contract.output), null, 2);

@@ -94,7 +94,7 @@ test.each([
   expect(result.stderr).toContain("Usage: ala <command>");
 });
 
-test.each([["mcp", "--http"], ["doctor"]])(
+test.each([["mcp", "--http"]])(
   "reports unavailable services for %j without contaminating stdout",
   (...args: string[]) => {
     const result = invoke(args);

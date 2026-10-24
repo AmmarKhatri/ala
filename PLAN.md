@@ -4,7 +4,7 @@
 > faster, verified assembly. Every speedup ships with a receipt: what was measured, on which CPU,
 > how correctness was checked, and what is still unknown.
 
-**Status:** Foundation in progress; P0-01 through P0-10 implemented. **Plan version:** 1.0 (2026-10-23).
+**Status:** Foundation in progress; P0-01 through P0-11 implemented. **Plan version:** 1.0 (2026-10-23).
 **Packages:** npm `ala-mcp` (the plain `ala` name is taken on npm), CLI binary `ala`.
 **License:** MIT.
 
@@ -1475,50 +1475,56 @@ not promises; integrity work never gets cut to hit a date.
 
 ### P0: Foundation
 
+**P0-11 completed (2026-10-24):** Doctor is available through CLI and MCP with
+read-only host probes, pass/warn/fail classifications, remediation, and explicit
+unknowns. Every check has status fixtures; the MCP contract and a live CLI run pass.
+All 188 tests pass. No tools or host policies are changed. See `docs/doctor.md` and
+`docs/p0-11-validation.txt`. Next task: P0-12.
+
 **P0-10 completed (2026-10-24):** Linux/macOS observation parsing, CPU features,
 narrow inferred microarchitecture mapping, counts/SMT, frequency/boost, virtualization,
 and toolchain probes are implemented. Unknown CPU mappings produce Unknown records.
 Both host fixture snapshots and a live macOS probe pass. See `docs/environment.md`
-and `docs/p0-10-validation.txt`. Next task: P0-11.
+and `docs/p0-10-validation.txt`. Next task: P0-12.
 
 **P0-09 completed (2026-10-24):** Evidence and Unknown schemas implement §16.1/§16.3.
 Canonical JSON digests, immutable records, validated round trips, and explicit
 promotion/resolution APIs are tested. Static estimates cannot be relabeled as tested
 or proven, and measurements remain distinct from correctness evidence. All 178 tests
-pass. See `docs/evidence.md` and `docs/p0-09-validation.txt`. Next task: P0-11.
+pass. See `docs/evidence.md` and `docs/p0-09-validation.txt`. Next task: P0-12.
 
 **P0-08 completed (2026-10-24):** CAS reads verify SHA-256, ledger reads verify
 sequence and hash linkage, and state uses fsync/atomic rename. Receipt pins and
 explicit references protect live objects during `ala gc`; dry runs are supported.
 Tampering and a child killed before state rename are covered by tests. Storage
 limitations are documented in `docs/storage.md`. See `docs/p0-08-validation.txt`.
-Next task: P0-11.
+Next task: P0-12.
 
 **P0-07 completed (2026-10-24):** The process foundation owns POSIX groups,
 terminates descendants on deadline/cancel/parent exit, scrubs the environment,
 caps stdout/stderr independently, and cleans private temporary directories.
 Two named process-output settings include recovery text. Real Node subprocess
 tests pass on the current macOS host; this does not establish sandbox enforcement.
-See `docs/p0-07-validation.txt`. Next task: P0-11.
+See `docs/p0-07-validation.txt`. Next task: P0-12.
 
 **P0-06 completed (2026-10-23):** Fourteen typed errors project to MCP `isError`
 results with the §19.3 payload. Unknown exceptions become safe internal errors.
 Generated `docs/errors.md` is checked for drift. Every code is exercised through
 MCP; all 113 tests pass. SDK-owned protocol/input errors retain SDK behavior.
-See `docs/p0-06-validation.txt`. Next task: P0-11.
+See `docs/p0-06-validation.txt`. Next task: P0-12.
 
 **P0-05 completed (2026-10-23):** Three sample setting modules cover fuzz budget,
 command timeout, and MCP response bytes. Zod validates syntax and inclusive bounds;
 `parseEnvironment` returns effective values with source or aggregated configuration
 issues. Recovery text includes all §19.2 fields. Tests cover defaults, overrides,
 floor/max, bad syntax, and recovery for every sample setting. Enforcement is deferred
-to consuming tasks. See `docs/p0-05-validation.txt`. Next task: P0-11.
+to consuming tasks. See `docs/p0-05-validation.txt`. Next task: P0-12.
 
 **P0-04 completed (2026-10-23):** MCP stdio initialization sends §10.5 verbatim.
 Zod contracts drive tool registration, input/output validation, structured results,
 provenance markers, and generated tool documentation. The ping tool passes SDK
 contract tests and real subprocess stdio testing. All 38 tests pass. HTTP remains
-unimplemented. See `docs/p0-04-validation.txt`. Next task: P0-11.
+unimplemented. See `docs/p0-04-validation.txt`. Next task: P0-12.
 
 **P0-03 completed (2026-10-23):** `bin/ala.mjs` dispatches stdio/HTTP MCP and
 doctor commands, prints help and the installed package version, and rejects
@@ -1535,7 +1541,7 @@ compatibility. See `docs/p0-02-validation.txt` for the acceptance run output.
 **P0-01 completed (2026-10-23):** ESM package, strict TypeScript, Vitest, Biome,
 MIT license, and contributor docs are in place. `npm run check` passes (one smoke
 test) on Node v24.14.1 / npm 11.11.0. D1 is resolved to Biome. The development
-minimum is Node 22.12 to satisfy Vitest. Next task: P0-11.
+minimum is Node 22.12 to satisfy Vitest. Next task: P0-12.
 
 | ID    | Task                                                                                                                                                                                                      | Acceptance criteria                                                                                      |
 | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
